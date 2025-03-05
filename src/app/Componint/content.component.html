@@ -1,0 +1,62 @@
+<!-- <h1>{{catogre}}</h1> -->
+<!-- <img src="{{image}}" alt=""> -->
+
+
+
+<div class="container alert alert-dark mt-5  p-5">
+<H2 class="text-center mb-5 ">Test</H2>
+<input
+        type="text"
+        class="form-control mb-3" 
+        placeholder="Enter Your Text"
+        [value]="Text"
+        [(ngModel)]="Text">
+        <!-- (input)="ShowText($event)"> -->
+<p class="fs-2 mt-4">Your Data Is :
+     <strong class="text-danger">{{Text}}</strong></p>
+</div>
+
+<h1>---------------------------------------------------</h1>
+
+
+
+
+<div class="d-flex justify-content-center align-items-center mt-5 flex-wrap">
+        @for (item of catogre; track $index) {
+          <button class="btn btn-success m-2 text-center" (click)="showProduct(item)">{{ item }}</button>
+        }
+      </div>
+      
+      <div class="d-flex justify-content-center align-items-center flex-wrap mt-5">
+        @for (product of filteredProducts; track product.ProductID) {
+          <div class="card m-2" style="width: 18rem;">
+            <img [src]="product.ProductImg" class="card-img-top m-auto mt-3 rounded " alt="...">
+            <div class="card-body text-center">
+              <h5 class="card-title">{{ product.ProductName }}</h5>
+              <p class="card-text"><strong>Price: {{ product.Producprice }}</strong></p>
+              <p class="card-text">Count In Store: {{ product.Count }}</p>
+              @if(product.Count==1){
+                <p class="card-text"> Only One Product Avialibal</p>
+              }@else if (product.Count==0) {
+                <p class="card-text"> No Product Avialibal</p>
+              }  
+              @if(product.Count==1){
+                <button class="btn btn-warning m-2" (click)="Buy(product.ProductID)">Buy</button>}
+              @else if(product.Count>1){
+                <button class="btn btn-success m-2" (click)="Buy(product.ProductID)">Buy</button>
+              }
+              @else{
+                <button class="btn btn-danger m-2" (click)="OutOfStock()">Out of Stock</button>
+              }
+
+              <!-- @if(product.Count == 0){
+                <button class="btn btn-danger m-2" (click)="OutOfStock()">Out of Stock</button>
+              } -->
+
+              <!-- <button *ngIf="product.Count > 0" class="btn btn-success m-2" (click)="Buy(product.ProductID)">Buy</button>
+              <button *ngIf="product.Count == 0"  class="btn btn-danger m-2" (click)="OutOfStock()">Out of Stock</button> -->
+
+            </div>
+          </div>
+        }
+      </div>

@@ -1,0 +1,75 @@
+<div class="container p-5 mt-5">
+  <h1 class="text-center text-warning mb-4 fw-bold">
+    {{ productId == 0 ? "➕ Add New Product" : "✏️ Edit Product" }}
+  </h1>
+
+  <form [formGroup]="productForm" (submit)="productHandler()" class="bg-dark text-light p-4 rounded shadow-lg">
+    
+    <div class="mb-4">
+      <label for="productName" class="form-label text-light fw-bold">Product Name</label>
+      <input type="text" class="form-control form-control-lg" id="productName"
+             aria-describedby="nameHelp" placeholder="Enter Product Name" formControlName="name"/>
+      
+      @if(getName.touched){ 
+        @if (getName.hasError('required')) {
+          <div id="nameHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Product Name is required
+          </div>
+        } 
+        @if (getName.hasError('minlength')) {
+          <div id="nameHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Product Name must be at least 3 characters
+          </div>
+        } 
+      }
+    </div>
+
+    <div class="mb-4">
+      <label for="productPrice" class="form-label text-light fw-bold">Product Price</label>
+      <input type="number" class="form-control form-control-lg" id="productPrice"
+             aria-describedby="priceHelp" placeholder="Enter Product Price" formControlName="price"/>
+      
+      @if(getPrice.touched){ 
+        @if (getPrice.hasError('required')) {
+          <div id="priceHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Price is required
+          </div>
+        } 
+        @if (getPrice.hasError('min')) {
+          <div id="priceHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Price must be greater than 0
+          </div>
+        } 
+      }
+    </div>
+
+    <div class="mb-4">
+      <label for="productQuantity" class="form-label text-light fw-bold">Product Quantity</label>
+      <input type="number" class="form-control form-control-lg" id="productQuantity"
+             aria-describedby="quantityHelp" placeholder="Enter Product Quantity" formControlName="quantity"/>
+      
+      @if(getQuantity.touched){ 
+        @if (getQuantity.hasError('required')) {
+          <div id="quantityHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Quantity is required
+          </div>
+        } 
+        @if (getQuantity.hasError('min')) {
+          <div id="quantityHelp" class="form-text text-danger mt-1">
+            <i class="bi bi-exclamation-triangle-fill me-1"></i> Quantity must be greater than 0
+          </div>
+        } 
+      }
+    </div>
+
+    <div class="d-grid gap-3">
+      <button type="submit" class="btn btn-warning btn-lg fw-bold shadow-sm">
+        {{ productId == 0 ? "➕ Add New Product" : "✏️ Edit Product" }}
+      </button>
+      <button type="reset" class="btn btn-outline-light btn-lg fw-bold shadow-sm">
+        🔄 Reset Form
+      </button>
+    </div>
+    
+  </form>
+</div>

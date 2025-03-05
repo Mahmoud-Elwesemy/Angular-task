@@ -1,0 +1,27 @@
+<div class="container bg-dark text-light rounded p-5 mt-5 shadow-lg">
+  <h2 class="text-warning text-center mb-4 fw-bold">📦 Product Details</h2>
+
+  <div class="border-bottom pb-3 mb-3">
+    <p class="lead fs-4">
+      <i class="bi bi-tag"></i> <strong>Product Name:</strong> {{ product?.name }}
+    </p>
+  </div>
+  
+  <div class="border-bottom pb-3 mb-3">
+    <p class="lead fs-4">
+      <i class="bi bi-cash-stack"></i> <strong>Product Price:</strong> {{ product?.price | currency }}
+    </p>
+  </div>
+
+  <div class="pb-3">
+    <p class="lead fs-4">
+      <i class="bi bi-boxes"></i> <strong>Product Quantity:</strong> {{ product?.quantity }}
+    </p>
+  </div>
+
+  <div class="text-center mt-4">
+    <button class="btn btn-outline-warning btn-lg px-4" [routerLink]="['/products']">
+      <i class="bi bi-arrow-left"></i> Back To Products
+    </button>
+  </div>
+</div>

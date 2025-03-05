@@ -1,0 +1,27 @@
+<div class="bg-dark container p-5 mt-5 rounded text-light">
+    <div class="row mt-5">
+    <div class="col-sm-3 row mt-8">
+            <select 
+            name="TrackName" 
+            [(ngModel)]="ChoseTrack"
+            >
+            @for (item of tracks; track $index) {
+                <option [value]="item.trackName" class="col-sm-8">{{item.trackName}}</option>
+            }              
+            </select>
+    </div>
+    <div class="col-sm-4">
+    <button class="btn btn-success" (click)="Search()">Search</button>
+    </div>  
+    </div>
+    <div class="mt-4">
+        <h3>Search Results:</h3>
+        <ul>
+          @for (track of filteredTracks; track $index) {
+            <li>{{ track.trackName }} <br> - Branches: <br> {{ track.branch.join(" ------ ") }}
+            <br>
+            </li>
+          }
+        </ul>
+      </div>
+</div>

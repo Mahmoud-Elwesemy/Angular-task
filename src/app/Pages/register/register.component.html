@@ -1,0 +1,28 @@
+<div class="bg-dark text-light p-5 rounded shadow-lg w-50 mx-auto mt-5">
+  <h3 class="fw-bold text-warning text-center">Sign Up</h3>
+
+  <input 
+    type="text" 
+    class="form-control form-control-lg shadow-sm" 
+    placeholder="Enter Your Name"
+  />
+
+  <input 
+    type="text" 
+    class="form-control form-control-lg shadow-sm mt-3" 
+    placeholder="Enter Your Email"
+  />
+
+  <input 
+    type="password" 
+    class="form-control form-control-lg shadow-sm mt-3" 
+    placeholder="Enter Your Password"
+  />
+
+  <p class="lead fs-5 mt-4 text-center text-muted">
+    Have an account? 
+    <a [routerLink]="['/account/login']" class="text-warning fw-bold">Login</a>
+  </p>
+
+  <button class="btn btn-warning w-100 mt-3 fw-bold shadow">Sign Up</button>
+</div>
